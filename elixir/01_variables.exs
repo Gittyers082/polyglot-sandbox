@@ -1,3 +1,4 @@
+# Script Structure
 # Basic binding
 level = 20
 name = "malemanape"
