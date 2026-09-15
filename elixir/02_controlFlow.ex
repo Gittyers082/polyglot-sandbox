@@ -123,8 +123,6 @@ defmodule ControlFlow do
     IO.puts(embark_quest(30, 50, 500))
   end
 
-
-
 end
 
 ControlFlow.start_quest()
