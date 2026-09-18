@@ -1,4 +1,4 @@
-defmodule CruzElixirIndividualActivity1 do
+defmodule ElixirIndividualActivity1 do
   @doc """
   Processes a positive integer to calculate its digit sum, mathematically reverse that sum without using strings
   or arrays, and analyze both the digits and the reversed result against specific numeric criteria.
@@ -23,7 +23,7 @@ defmodule CruzElixirIndividualActivity1 do
     reverse_it(sum, 0)
   end
 
-  # Requirement 2.1: Reversing using aritmetic operations
+  # Requirement 2.1: Reversing using arithmetic operations
   # Private functions for reversed_sum()
   defp reverse_it(0, reversed), do: reversed
   defp reverse_it(number, reversed) do
@@ -74,18 +74,47 @@ defmodule CruzElixirIndividualActivity1 do
     IO.puts(String.duplicate("=-=", 20))
   end
 
+  # Extra Feature: User input w/ error handling
+  @exit_keywords ["exit", "quit"]
+  def user_input do
+    case IO.gets("Enter a positive integer ('exit' or 'quit' to close the program): ") do
+      :eof ->
+        IO.puts("No input available. Exiting...")
+
+      {:error, reason} ->
+        IO.puts("Input error: #{inspect(reason)}")
+
+      raw_input -> input = String.trim(raw_input)
+
+      if String.downcase(input) in @exit_keywords do
+        IO.puts("Goodbye!")
+      else
+        case Integer.parse(input) do
+          {number, ""} -> output(number)
+
+          _ -> IO.puts("Error: Input must be a positive integer! Your input: #{inspect(input)}")
+             IO.puts(String.duplicate("=-=", 20))
+        end
+      user_input()
+     end
+    end
+  end
+
 end
 
 # Good Inputs
-CruzElixirIndividualActivity1.output(1)
-CruzElixirIndividualActivity1.output(2)
-CruzElixirIndividualActivity1.output(67)
-CruzElixirIndividualActivity1.output(9000)
-CruzElixirIndividualActivity1.output(1_000_000_000_000_000)
+ElixirIndividualActivity1.output(1)
+ElixirIndividualActivity1.output(2)
+ElixirIndividualActivity1.output(67)
+ElixirIndividualActivity1.output(9000)
+ElixirIndividualActivity1.output(1_000_000_000_000_000)
 
 # Bad Inputs
-CruzElixirIndividualActivity1.output(0)
-CruzElixirIndividualActivity1.output(67.0)
-CruzElixirIndividualActivity1.output(-67)
-CruzElixirIndividualActivity1.output("six seven")
-CruzElixirIndividualActivity1.output(nil)
+ElixirIndividualActivity1.output(0)
+ElixirIndividualActivity1.output(67.0)
+ElixirIndividualActivity1.output(-67)
+ElixirIndividualActivity1.output("six seven")
+ElixirIndividualActivity1.output(nil)
+
+# User Input
+ElixirIndividualActivity1.user_input()

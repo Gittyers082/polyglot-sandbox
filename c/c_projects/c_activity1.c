@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int getSumDigits(int number);
 int getReverseSum(int number);
 bool isPrime(int number);
+const char* checkParity(int number);
+int countDigitsGreaterThanFive(int number);
 
 int getSumDigits(int number) {
     int sum = 0;
@@ -18,27 +21,52 @@ int getReverseSum(int number) {
     int sumDigits = getSumDigits(number);
     int reverseSum = 0;
 
-    while (number != 0) {
-        int remainder = number % 10;
+    while (sumDigits != 0) {
+        int remainder = sumDigits % 10;
         reverseSum = reverseSum * 10 + remainder;
-        number /= 10;
+        sumDigits /= 10;
     }
     return reverseSum;
 }
 
-int
+bool isPrime(int number) {  
+    if (number <= 1) {
+        return false;
+    }
+
+    for (int i = 2; i <= number / 2; i++) {
+        if (number % i == 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+const char* checkParity(int number) {
+    if (number % 2 == 0) {
+        return "even";
+    } else {
+        return "odd";
+    } 
+}
+
+int countDigitsGreaterThanFive(int number) {
+    int count = 0;
+
+    while (number > 0) {
+        int remainder =  number % 10;
+
+        if (remainder > 5) {
+            count++;
+        }
+        number /= 10;
+    }
+    return count;
+}
 
 int main() {
     int input;
-    int sumDigits;
-     printf("Enter a positive Integer: ");
-     scanf("%d", &input);
 
-     sumDigits = getSumDigits(input);
-
-     printf("Original number: %d\n", input);
-     printf("Sum of digits: %d\n", sumDigits);
-
-     return 0;
+    printf("Enter a positive integer")
 
 }
