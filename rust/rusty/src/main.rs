@@ -1,7 +1,7 @@
 use std::io;
 
 fn main() {
-    println!("=== Character Setup ===");
+    println!("Character Setup");
     println!("Enter a core trait (strength, magic, stealth, empathy):");
 
     let mut input = String::new();
