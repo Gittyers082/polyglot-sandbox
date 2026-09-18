@@ -1,0 +1,17 @@
+# OS Generated
+.DS_Store
+Thumbs.db
+
+# Elixir
+_build/
+deps/
+*.beam
+erl_crash.dump
+
+# C
+*.exe
+
+# Rust
+target/
+Cargo.lock
+
