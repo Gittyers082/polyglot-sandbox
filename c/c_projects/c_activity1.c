@@ -67,6 +67,24 @@ int countDigitsGreaterThanFive(int number) {
 int main() {
     int input;
 
-    printf("Enter a positive integer")
+    printf("Enter a positive integer: ");
+    if (scanf("%d", &input) != 1 || input <= 0) {
+        printf("Error: Input must be a positive integer! Your input: %d\n", input);
+        return 1;
+    } 
 
+    int sumDigits = getSumDigits(input);
+    int reverseSum = getReverseSum(input);
+    bool primeStats = isPrime(reverseSum);
+    const char* parityStats = checkParity(reverseSum);
+    int count = countDigitsGreaterThanFive(input);
+
+    printf("Original number: %d\n", input);
+    printf("Sum of all digits: %d\n", sumDigits);
+    printf("Reversed sum of all digits: %d\n", reverseSum);
+    printf("Prime status of the reversed sum: %s\n", primeStats ? "Is Prime" : "Not Prime");
+    printf("Parity status of the reversed sum: %s\n", parityStats);
+    printf("Total count of digits greater than 5: %d\n", count);
+
+    return 0;
 }
